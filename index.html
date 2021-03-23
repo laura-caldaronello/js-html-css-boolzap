@@ -62,22 +62,12 @@
                 </div>
             </div>
             <div id="chat-content">
-                <div class="row-me">
-                    <div class="me-message general-text-area-style">
-                        Hai portato a spasso il cane?
-                        <div class="message-time">orario</div>
-                    </div>
-                </div>
-                <div class="row-me">
-                    <div class="me-message general-text-area-style">
-                        Ricordati di dargli da mangiare
-                        <div class="message-time">orario</div>
-                    </div>
-                </div>
-                <div class="row-other">
-                    <div class="other-message general-text-area-style">
-                        Tutto fatto!
-                        <div class="message-time">orario</div>
+                <div class="row" v-for="message in contacts[0].messages" :class="(message.status == 'sent')? 'row-me' : 'row-other'">
+                    <div class="general-text-area-style" :class="(message.status == 'sent')? 'me-message' : 'other-message'">
+                        {{message.text}}
+                        <div class="message-time">
+                            {{message.date}}
+                        </div>
                     </div>
                 </div>
             </div>

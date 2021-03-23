@@ -79,7 +79,7 @@ input {
     border: none;
 }
 
-#chat-content [class*='row-'] {
+#chat-content [class*='row'] {
     padding: 5px;
 }
 #chat-content .row-me {
@@ -88,8 +88,7 @@ input {
 #chat-content [class*='-message'] {
     position: relative;
     display: inline-block;
-    width: fit-content;
-    max-width: 40%;
+    width: 40%;
     padding: 10px 15px 15px 10px;
     font-size: 0.8em;
     text-align: left;
