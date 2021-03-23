@@ -84,13 +84,13 @@ input {
     border: none;
 }
 
-#chat-content [class*='row'] {
+.chat-content [class*='row'] {
     padding: 5px;
 }
-#chat-content .row-me {
+.chat-content .row-me {
     text-align: right;
 }
-#chat-content [class*='-message'] {
+.chat-content [class*='-message'] {
     position: relative;
     display: inline-block;
     width: 40%;
@@ -98,13 +98,13 @@ input {
     font-size: 0.8em;
     text-align: left;
 }
-#chat-content .me-message.general-text-area-style {
+.chat-content .me-message.general-text-area-style {
     background-color: rgb(213,249,186);
 }
-#chat-content .other-message.general-text-area-style {
+.chat-content .other-message.general-text-area-style {
     background-color: white;
 }
-#chat-content .message-time {
+.chat-content .message-time {
     position: absolute;
     right: 3px;
     bottom: 2px;
@@ -194,24 +194,18 @@ input {
 #chats .person-style:not(.active):hover {
     background-color: rgb(234,234,234);
 }
-/* #chats::-webkit-scrollbar { */
-    /* lo tengo se devo fare qualcosa più tardi */
-/* } */
 
 /* /left */
 
 /* right */
 
-#chat-content {
+.chat-content {
     min-height: calc(100% - 10% - 10%);
     width: 100%;
     padding: 20px;
     overflow-y: scroll;
     background-image: url('../img/mine.jpg');
 }
-/* #chat-content::-webkit-scrollbar { */
-    /* lo tengo se devo fare qualcosa più tardi */
-/* } */
 
 #send {
     height: 10%;
