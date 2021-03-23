@@ -25,7 +25,7 @@ body {
 
 /* /selettori preliminari */
 
-/* classi generiche */
+/* selettori generici */
 
 i, a {
     color: rgb(177,177,177);
@@ -44,7 +44,6 @@ input {
     background-color: rgb(234,234,234);
 }
 
-/* provvisorio */
 .person-style > * {
     display: inline-block;
     vertical-align: middle;
@@ -57,7 +56,6 @@ input {
     padding: 0 5px;
     line-height: 50px; /* come il circle */
 }
-/* /provvisorio */
 
 .circle-style {
     position: relative;
@@ -112,7 +110,7 @@ input {
     color: rgb(177,177,177);
 }
 
-/* /classi generiche */
+/* /selettori generici */
 
 /* selettori specifici */
 
@@ -164,7 +162,6 @@ input {
     justify-content: space-around;
     align-items: center;
 }
-/* generalizzare qualcosa dai prossimi due selettori? */
 #search-chat input {
     width: 80%;
     border: none;
