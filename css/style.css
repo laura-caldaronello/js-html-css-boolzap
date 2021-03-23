@@ -65,12 +65,17 @@ input {
     width: 50px;
     border-radius: 50%;
     background-color: lightgrey;
+    overflow: hidden;
 }
-.circle-style > * {
+.circle-style > i {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+.circle-style img {
+    height: 100%;
+    width: 100%;
 }
 
 .general-text-area-style {
@@ -176,6 +181,12 @@ input {
     min-height: calc(100% - 10% - 10% - 7%);
     overflow-y: scroll;
     background-color: white;
+}
+#chats .person-style {
+    padding: 10px;
+}
+#chats .person-style:not(:last-child) {
+    border-bottom: 1px solid rgb(177,177,177);
 }
 /* #chats::-webkit-scrollbar { */
     /* lo tengo se devo fare qualcosa più tardi */
