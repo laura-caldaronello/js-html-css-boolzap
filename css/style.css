@@ -204,7 +204,7 @@ input {
     background-image: url('../img/mine.jpg');
 }
 
-#send {
+.send-to {
     height: 10%;
     width: 100%;
     display: flex;
@@ -213,12 +213,12 @@ input {
     padding: 5px 10px;
     background-color: rgb(243,238,234);
 }
-#send .general-text-area-style {
+.send-to .general-text-area-style {
     width: 80%;
     height: 100%;
     padding: 10px;
 }
-#send i {
+.send-to i {
     font-size: 1.2em;
     color: rgb(107,115,118);
 }

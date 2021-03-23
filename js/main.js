@@ -101,6 +101,25 @@ var app = new Vue({
                 clickedContact.active = true;
             }
         },
+        sendMessage: function(textingContact) {
+            var text = document.getElementById('write-message').value;
+            if (text != '') {
+                var d = new Date();
+                var day = d.getDate();
+                var month = d.getMonth();
+                var year = d.getFullYear();
+                var hour = d.getHours();
+                var minute = d.getMinutes();
+                var second = d.getSeconds();
+                var newMessage = {
+                    date: day + '/' + month + '/' + year + ' ' + hour + ':' + minute + ':' + second,
+                    text: text,
+                    status: 'sent'
+                };
+                textingContact.messages.push(newMessage);
+                document.getElementById('write-message').value = '';
+            }
+        },
     },
 });
 Vue.config.devtools = true;

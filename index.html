@@ -82,9 +82,9 @@
                     </div>
                 </div>
             </div>
-            <div id="send">
+            <div class="send-to" v-for="contact in contacts" v-if="contact.active">
                 <i class="far fa-smile"></i>
-                <input type="text" class="general-text-area-style" name="" id="" placeholder="Scrivi un messaggio">
+                <input type="text" class="general-text-area-style" name="write-message" id="write-message" placeholder="Scrivi un messaggio" v-on:keyup.enter="sendMessage(contact)">
                 <i class="fas fa-microphone"></i>
                 </div>
             </div>
