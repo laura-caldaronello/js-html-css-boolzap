@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- QUI LINK FONT -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <title>Document</title>
@@ -23,13 +23,22 @@
                 </div>
             </div>
             <div id="notifications">
-                
+                <div class="circle-style">
+                    <i class="fas fa-bell-slash"></i>
+                </div>
+                <div>
+                    <p>Ricevi notifiche di nuovi messaggi</p>
+                    <a href="#">Attiva notifiche desktop</a>
+                </div>
             </div>
             <div id="search-chat">
-
+                <div class="general-text-area-style">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
             </div>
             <div id="chats">
-                
+
             </div>
         </div>
         <div id="right-content">
@@ -39,6 +48,15 @@
                 </div>
                 <div class="buttons-container-style">
     
+                </div>
+            </div>
+            <div id="chat-content">
+
+            </div>
+            <div id="send">
+                <i class="far fa-smile"></i>
+                <input type="text" class="general-text-area-style" name="" id="" placeholder="Scrivi un messaggio">
+                <i class="fas fa-microphone"></i>
                 </div>
             </div>
         </div>
