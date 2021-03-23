@@ -16,7 +16,9 @@
         <div id="left-content">
             <div class="header-style">
                 <div class="person-style" id="person-me">
-                    <div class="circle-style"></div>
+                    <div class="circle-style">
+                        <img :src="'img/avatar_io.jpg'">
+                    </div>
                     <div class="person-info">
                         <div class="person-name">Nome Utente</div>
                     </div>
@@ -56,9 +58,11 @@
         <div id="right-content">
             <div class="header-style">
                 <div class="person-style" id="person-chatting">
-                    <div class="circle-style"></div>
+                    <div class="circle-style">
+                        <img :src="'img/avatar' + contacts[0].avatar + '.jpg'">
+                    </div>
                     <div class="person-info">
-                        <div class="person-name">Michele</div>
+                        <div class="person-name">{{contacts[0].name}}</div>
                         <div class="person-access">Ultimo accesso oggi alle</div>
                     </div>
                 </div>
