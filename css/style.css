@@ -1,0 +1,84 @@
+/* selettori preliminari */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, rgb(0,150,136) 0 15%, rgb(219,219,212) 15% 85%);
+    padding-top: 2vh;
+}
+
+#root {
+    width: 80vw;
+    min-width: 600px;
+    height: calc(100vh - (2vh * 2));
+    min-height: 500px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+/* /selettori preliminari */
+
+/* classi generiche */
+
+.header-style {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: lightgrey;
+    border: 1px solid grey;
+}
+
+/* provvisorio */
+.person-style,
+.buttons-container-style {
+    width: 100px;
+    height: 100%;
+    background-color: lightseagreen;
+}
+/* /provvisorio */
+
+/* /classi generiche */
+
+/* selettori specifici */
+
+[id$='-content'] {
+    float: left;
+    height: 100%;
+}
+#left-content {
+    width: 30%;
+}
+#right-content {
+    width: calc(100% - 30%);
+}
+
+#notifications {
+    height: 10%;
+    width: 100%;
+    background-color: rgb(142,218,252);
+}
+
+#search-chat {
+    height: 5%;
+    width: 100%;
+    background-color: lightgray;
+}
+
+#chats {
+    width: 100%;
+    min-height: calc(100% - 10% - 10% - 5%);
+    overflow-y: scroll;
+    background-color: white;
+}
+#chats::-webkit-scrollbar {
+    /* lo tengo se devo fare qualcosa più tardi */
+}
+
+/* /selettori specifici */
