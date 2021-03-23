@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div id="chats">
-                <div v-for="contact in contacts" class="person-style">
+                <div v-for="(contact,index) in contacts" class="person-style"  :class="(index == 0)? 'active' : ''">
                     <div class="circle-style">
                         <img :src="'img/avatar' + contact.avatar + '.jpg'">
                     </div>

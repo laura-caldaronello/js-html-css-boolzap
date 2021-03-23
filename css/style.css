@@ -186,7 +186,13 @@ input {
     padding: 10px;
 }
 #chats .person-style:not(:last-child) {
-    border-bottom: 1px solid rgb(177,177,177);
+    border-bottom: 1px solid rgb(234,234,234);
+}
+#chats .person-style.active {
+    background-color: rgb(234,234,234);
+}
+#chats .person-style:not(.active):hover {
+    background-color: rgb(234,234,234);
 }
 /* #chats::-webkit-scrollbar { */
     /* lo tengo se devo fare qualcosa più tardi */
