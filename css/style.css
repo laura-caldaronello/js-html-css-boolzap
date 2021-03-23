@@ -27,8 +27,8 @@ body {
 
 /* classi generiche */
 
-i {
-    color: grey;
+i, a {
+    color: rgb(177,177,177);
 }
 
 input {
@@ -39,17 +39,23 @@ input {
     height: 10%;
     display: flex;
     justify-content: space-between;
+    align-content: center;
     padding: 5px 10px;
-    background-color: lightgrey;
-    border: 1px solid grey;
+    background-color: rgb(234,234,234);
 }
 
 /* provvisorio */
-.person-style,
-.buttons-container-style {
-    width: 100px;
-    height: 100%;
-    background-color: lightseagreen;
+.person-style > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+.person-style .person-access {
+    font-size: 0.8em;
+    color: rgb(177,177,177);
+}
+.buttons-container-style i {
+    padding: 0 5px;
+    line-height: 50px; /* come il circle */
 }
 /* /provvisorio */
 
@@ -83,6 +89,7 @@ input {
 }
 #left-content {
     width: 40%;
+    border-right: 1px solid rgb(177,177,177);
 }
 #right-content {
     width: calc(100% - 40%);
@@ -93,24 +100,29 @@ input {
 #notifications {
     height: 10%;
     width: 100%;
+    padding: 5px 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: rgb(142,218,252);
     font-size: 0.8em;
 }
+#notifications .circle-style {
+    background-color: rgb(242,251,255);
+}
 #notifications .circle-style i {
-    font-size: 1.2em;
+    font-size: 1.4em;
+    color: rgb(142,218,252);
 }
 #notifications div:last-child {
     width: 80%;
 }
 
 #search-chat {
-    height: 5%;
+    height: 7%;
     width: 100%;
     padding: 5px;
-    background-color: lightgrey;
+    background-color: rgb(250,250,250);
 }
 #search-chat .general-text-area-style {
     width: 100%;
@@ -123,8 +135,8 @@ input {
 #search-chat input {
     width: 80%;
     border: none;
-    font-size: 0.6em;
-    padding: 0.2em;
+    font-size: 0.7em;
+    padding: 0.15em;
     color: grey;
 }
 #search-chat i {
@@ -133,7 +145,7 @@ input {
 
 #chats {
     width: 100%;
-    min-height: calc(100% - 10% - 10% - 5%);
+    min-height: calc(100% - 10% - 10% - 7%);
     overflow-y: scroll;
     background-color: white;
 }
@@ -162,7 +174,7 @@ input {
     justify-content: space-around;
     align-items: center;
     padding: 5px 10px;
-    background-color: lightgrey;
+    background-color: rgb(243,238,234);
 }
 #send .general-text-area-style {
     width: 80%;
@@ -171,6 +183,7 @@ input {
 }
 #send i {
     font-size: 1.2em;
+    color: rgb(107,115,118);
 }
 
 /* /right */
