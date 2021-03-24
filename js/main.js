@@ -121,9 +121,9 @@ var app = new Vue({
         // NB: la arrow function mi permette di cambiare lo scope del this e fa in modo che si riferisca effettivamente all'oggetto root; utilizzando una function normale il settimeout sembra che cambi il significato del this
         receiveConfirm: function(textingContact) {
             setTimeout(() => {
-                var current = this.currentDate();
+                var date = this.currentDate();
                 var newMessage = {
-                    date: current,
+                    date: date,
                     text: 'ok',
                     status: 'received'
                 };
