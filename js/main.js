@@ -92,20 +92,18 @@ var app = new Vue({
         ],
 
     },
-    // created: {
-    //     currentDate: setInterval(function() {
-    //         var d = new Date();
-    //         var day = d.getDate();
-    //         var month = d.getMonth();
-    //         var year = d.getFullYear();
-    //         var hour = d.getHours();
-    //         var minute = d.getMinutes();
-    //         var second = d.getSeconds();
-    //         var date = day + '/' + month + '/' + year + ' ' + hour + ':' + minute + ':' + second;
-    //         return date;
-    //     },1000),
-    // },
     methods: {
+        currentDate: function() {
+            var d = new Date();
+            var day = d.getDate();
+            var month = d.getMonth();
+            var year = d.getFullYear();
+            var hour = d.getHours();
+            var minute = d.getMinutes();
+            var second = d.getSeconds();
+            var date = day + '/' + month + '/' + year + ' ' + hour + ':' + minute + ':' + second;
+            return date;
+        },
         openChat: function(clickedContact) {
             if (!clickedContact.active) {
                 this.contacts.forEach((contact) => {
@@ -117,16 +115,9 @@ var app = new Vue({
         sendMessage: function(textingContact) {
             var text = document.getElementById('write-message').value;
             if (text != '') {
-                // var d = new Date();
-                // var day = d.getDate();
-                // var month = d.getMonth();
-                // var year = d.getFullYear();
-                // var hour = d.getHours();
-                // var minute = d.getMinutes();
-                // var second = d.getSeconds();
-                // var date = day + '/' + month + '/' + year + ' ' + hour + ':' + minute + ':' + second;
+                var date = this.currentDate();
                 var newMessage = {
-                    date: currentDate(),
+                    date: date,
                     text: text,
                     status: 'sent'
                 };
@@ -134,30 +125,18 @@ var app = new Vue({
                 document.getElementById('write-message').value = '';
             }
         },
-        // receiveConfirm: function(textingContact) {
-        //     setTimeout(function(){
-        //         var newMessage = {
-        //             date: date,
-        //             text: 'ok',
-        //             status: 'received'
-        //         };
-        //         textingContact.messages.push(newMessage);
-        //     },1000)
-        // },
+        // NB: la arrow function mi permette di cambiare lo scope del this e fa in modo che si riferisca effettivamente all'oggetto root; utilizzando una function normale il settimeout sembra che cambi il significato del this
+        receiveConfirm: function(textingContact) {
+            setTimeout(() => {
+                var current = this.currentDate();
+                var newMessage = {
+                    date: current,
+                    text: 'ok',
+                    status: 'received'
+                };
+                textingContact.messages.push(newMessage);
+            },1000);
+        },
     },
 });
 Vue.config.devtools = true;
-
-function currentDate() {
-    setInterval(function() {
-        var d = new Date();
-        var day = d.getDate();
-        var month = d.getMonth();
-        var year = d.getFullYear();
-        var hour = d.getHours();
-        var minute = d.getMinutes();
-        var second = d.getSeconds();
-        var date = day + '/' + month + '/' + year + ' ' + hour + ':' + minute + ':' + second;
-        return date;
-    },1000);
-};

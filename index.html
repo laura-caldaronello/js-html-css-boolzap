@@ -84,7 +84,7 @@
             </div>
             <div class="send-to" v-for="contact in contacts" v-if="contact.active">
                 <i class="far fa-smile"></i>
-                <input type="text" class="general-text-area-style" name="write-message" id="write-message" placeholder="Scrivi un messaggio" v-on:keyup.enter="sendMessage(contact)">
+                <input type="text" class="general-text-area-style" name="write-message" id="write-message" placeholder="Scrivi un messaggio" v-on:keyup.enter="sendMessage(contact);receiveConfirm(contact)">
                 <i class="fas fa-microphone"></i>
                 </div>
             </div>
