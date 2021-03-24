@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div id="chats">
-                <div v-for="contact in contacts" v-if="contact.visible" class="person-style"  :class="contact.active? 'active' : ''" @click="openChat(contact)">
+                <div v-for="contact in contacts" v-if="contact.visible" class="person-style"  :class="contact.active? 'active' : ''" @click="openChat(contact);closeWindow()">
                     <div class="circle-style">
                         <img :src="'img/avatar' + contact.avatar + '.jpg'">
                     </div>
@@ -74,12 +74,18 @@
                 </div>
             </div>
             <div class="chat-content" v-for="contact in contacts" v-if="contact.active">
-                <div class="row" v-for="message in contact.messages" :class="(message.status == 'sent')? 'row-me' : 'row-other'">
+                <div class="row" v-for="(message,index) in contact.messages" :class="(message.status == 'sent')? 'row-me' : 'row-other'">
                     <div class="general-text-area-style" :class="(message.status == 'sent')? 'me-message' : 'other-message'">
                         {{message.text}}
                         <div class="message-time">
                             {{message.date}}
                         </div>
+                        <i class="fas fa-chevron-down" @click="toggleWindow(index)">
+                            <ul :class="(clickedChevron == index)? 'visible' : ''" class="message-menu">
+                                <li>Message info</li>
+                                <li>Delete message</li>
+                            </ul>
+                        </i>
                     </div>
                 </div>
             </div>

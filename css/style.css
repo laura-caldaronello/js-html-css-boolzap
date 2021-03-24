@@ -31,7 +31,7 @@ i, a {
     color: rgb(177,177,177);
 }
 
-input {
+input, ul {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -92,7 +92,8 @@ input {
     position: relative;
     display: inline-block;
     width: 40%;
-    padding: 10px 15px 15px 10px;
+    overflow-wrap: break-word;
+    padding: 10px 20px 15px 20px;
     font-size: 0.8em;
     text-align: left;
 }
@@ -102,13 +103,44 @@ input {
 .chat-content .other-message.general-text-area-style {
     background-color: white;
 }
-.chat-content .message-time {
+.chat-content [class*='-message'] .message-time {
     position: absolute;
     right: 3px;
     bottom: 2px;
     font-size: 0.7em;
     color: rgb(177,177,177);
 }
+.chat-content [class*='-message'] i {
+    visibility: hidden;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: rgb(177,177,177);
+}
+.chat-content [class*='-message']:hover i {
+    visibility: visible;
+}
+.chat-content [class*='-message'] ul {
+    position: absolute;
+    width: max-content;
+    padding: 20px;
+    top: 15px;
+    right: 0;
+    list-style: none;
+    background-color: white;
+    font-weight: 400;
+    box-shadow: 0 1px 5px grey;
+    color: black;
+    z-index: 1;
+    visibility: hidden;
+}
+.chat-content [class*='-message'] ul.visible {
+    visibility: visible;
+}
+.chat-content [class*='-message'] li:not(:last-child) {
+    padding-bottom: 20px;
+}
+
 
 /* /selettori generici */
 
@@ -175,7 +207,7 @@ input {
 
 #chats {
     width: 100%;
-    min-height: calc(100% - 10% - 10% - 7%);
+    height: calc(100% - 10% - 10% - 7%);
     overflow-y: scroll;
     background-color: white;
 }
@@ -197,7 +229,7 @@ input {
 /* right */
 
 .chat-content {
-    min-height: calc(100% - 10% - 10%);
+    height: calc(100% - 10% - 10%);
     width: 100%;
     padding: 20px;
     overflow-y: scroll;

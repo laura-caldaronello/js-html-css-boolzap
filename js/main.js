@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#root',
     data: {
+        clickedChevron: -1,
         search: '',
         contacts: [
             {
@@ -12,17 +13,17 @@ var app = new Vue({
                     {
                         date: '10/01/2020 15:30:55',
                         text: 'Hai portato a spasso il cane?',
-                        status: 'sent'
+                        status: 'sent',
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         text: 'Ricordati di dargli da mangiare',
-                        status: 'sent'
+                        status: 'sent',
                     },
                     {
                         date: '10/01/2020 16:15:22',
                         text: 'Tutto fatto!',
-                        status: 'received'
+                        status: 'received',
                     },
                 ],
             },
@@ -94,6 +95,19 @@ var app = new Vue({
 
     },
     methods: {
+        toggleWindow: function(index) {
+            if (this.clickedChevron == index) {
+                this.clickedChevron = -1;
+            }
+            else {
+                this.clickedChevron = index;
+            }
+        },
+        closeWindow: function() {
+            if (this.clickedChevron != -1) {
+                this.clickedChevron = -1;
+            }
+        },
         contactVisibility: function() {
             var searchChars = this.search;
             var index = searchChars.length;
