@@ -94,14 +94,7 @@ var app = new Vue({
     },
     methods: {
         currentDate: function() {
-            var d = new Date();
-            var day = d.getDate();
-            var month = d.getMonth();
-            var year = d.getFullYear();
-            var hour = d.getHours();
-            var minute = d.getMinutes();
-            var second = d.getSeconds();
-            var date = day + '/' + month + '/' + year + ' ' + hour + ':' + minute + ':' + second;
+            var date = dayjs().format('DD/MM/YYYY hh:mm:ss');
             return date;
         },
         openChat: function(clickedContact) {
