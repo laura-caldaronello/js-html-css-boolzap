@@ -42,11 +42,11 @@
             <div id="search-chat">
                 <div class="general-text-area-style">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" v-on:keyup="contactVisibility">
                 </div>
             </div>
             <div id="chats">
-                <div v-for="contact in contacts" class="person-style"  :class="contact.active? 'active' : ''" @click="openChat(contact)">
+                <div v-for="contact in contacts" v-if="contact.visible" class="person-style"  :class="contact.active? 'active' : ''" @click="openChat(contact)">
                     <div class="circle-style">
                         <img :src="'img/avatar' + contact.avatar + '.jpg'">
                     </div>

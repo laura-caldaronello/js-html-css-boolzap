@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#root',
     data: {
+        search: '',
         contacts: [
             {
                 name: 'Michele',
@@ -93,6 +94,20 @@ var app = new Vue({
 
     },
     methods: {
+        contactVisibility: function() {
+            var searchChars = this.search;
+            var index = searchChars.length;
+            this.contacts.forEach((contact) => {
+                var str = contact.name;
+                var nameChars = str.slice(0,index);
+                if (nameChars == searchChars) {
+                    contact.visible = true;
+                }
+                else {
+                    contact.visible = false;
+                };
+            });
+        },
         currentDate: function() {
             var date = dayjs().format('DD/MM/YYYY hh:mm:ss');
             return date;
