@@ -164,9 +164,9 @@ var app = new Vue({
                 textingContact.messages.push(newMessage);
                 document.getElementById('write-message').value = '';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
+                this.receiveConfirm(textingContact);
             }
             this.newMessage = '';
-            this.receiveConfirm(textingContact);
         },
         insertEmoticon: function(element) {
             this.newMessage += element;

@@ -277,6 +277,7 @@ ul[class*='-menu'] li {
 .send-to i {
     font-size: 1.2em;
     color: rgb(107,115,118);
+    cursor: pointer;
 }
 .send-to .fa-smile {
     position: relative;
