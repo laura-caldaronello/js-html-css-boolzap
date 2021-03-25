@@ -5,6 +5,7 @@ var app = new Vue({
         activeContact: 0,
         lastAccess: 'Ultimo accesso oggi alle',
         search: '',
+        newMessage: '',
         contacts: [
             {
                 name: 'Michele',
@@ -131,20 +132,6 @@ var app = new Vue({
         openChat: function(clickedIndex) {
             this.activeContact = clickedIndex;
         },
-        sendMessage: function(textingContact) {
-            var text = document.getElementById('write-message').value;
-            if (text != '') {
-                var date = this.currentDate();
-                var newMessage = {
-                    date: date,
-                    text: text,
-                    status: 'sent'
-                };
-                textingContact.messages.push(newMessage);
-                document.getElementById('write-message').value = '';
-                document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
-            }
-        },
         // NB: la arrow function mi permette di cambiare lo scope del this e fa in modo che si riferisca effettivamente all'oggetto root; utilizzando una function normale il settimeout sembra che cambi il significato del this
         receiveConfirm: function(textingContact) {
             this.lastAccess = textingContact.name + ' sta scrivendo...';
@@ -159,6 +146,22 @@ var app = new Vue({
                 this.lastAccess = 'Ultimo accesso oggi alle';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
             },1000);
+        },
+        sendMessage: function(textingContact) {
+            var text = this.newMessage;
+            if (text != '') {
+                var date = this.currentDate();
+                var newMessage = {
+                    date: date,
+                    text: text,
+                    status: 'sent'
+                };
+                textingContact.messages.push(newMessage);
+                document.getElementById('write-message').value = '';
+                document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
+            }
+            this.newMessage = '';
+            this.receiveConfirm(textingContact);
         },
     },
 });
