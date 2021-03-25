@@ -149,6 +149,7 @@ var app = new Vue({
                 };
                 textingContact.messages.push(newMessage);
                 this.lastAccess = 'Ultimo accesso oggi alle';
+                document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
             },1000);
         },
         sendMessage: function(textingContact) {
@@ -162,6 +163,7 @@ var app = new Vue({
                 };
                 textingContact.messages.push(newMessage);
                 document.getElementById('write-message').value = '';
+                document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
                 this.receiveConfirm(textingContact);
             }
             this.newMessage = '';
@@ -169,9 +171,6 @@ var app = new Vue({
         insertEmoticon: function(element) {
             this.newMessage += '<i class="in-text fas fa-' + element + '"></i>';
         },
-    },
-    updated() {
-        document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
     },
 });
 Vue.config.devtools = true;
