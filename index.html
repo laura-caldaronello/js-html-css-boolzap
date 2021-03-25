@@ -82,7 +82,7 @@
                         <div class="message-time">
                             {{message.date}}
                         </div>
-                        <i class="fas fa-chevron-down" @click="toggleWindow(index)">
+                        <i class="fas" :class="(clickedChevron != -1)? 'fa-chevron-up' : 'fa-chevron-down'" @click="toggleWindow(index)">
                             <ul :class="(clickedChevron == index)? 'visible' : ''" class="message-menu">
                                 <li>Message info</li>
                                 <li @click="deleteMessage(index,contacts[activeContact])">Delete message</li>

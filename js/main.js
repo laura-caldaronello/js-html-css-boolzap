@@ -142,6 +142,7 @@ var app = new Vue({
                 };
                 textingContact.messages.push(newMessage);
                 document.getElementById('write-message').value = '';
+                document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
             }
         },
         // NB: la arrow function mi permette di cambiare lo scope del this e fa in modo che si riferisca effettivamente all'oggetto root; utilizzando una function normale il settimeout sembra che cambi il significato del this
@@ -156,6 +157,7 @@ var app = new Vue({
                 };
                 textingContact.messages.push(newMessage);
                 this.lastAccess = 'Ultimo accesso oggi alle';
+                document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
             },1000);
         },
     },
