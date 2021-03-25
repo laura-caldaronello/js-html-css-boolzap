@@ -3,6 +3,7 @@ var app = new Vue({
     data: {
         clickedChevron: -1,
         activeContact: 0,
+        lastAccess: 'Ultimo accesso oggi alle',
         search: '',
         contacts: [
             {
@@ -145,6 +146,7 @@ var app = new Vue({
         },
         // NB: la arrow function mi permette di cambiare lo scope del this e fa in modo che si riferisca effettivamente all'oggetto root; utilizzando una function normale il settimeout sembra che cambi il significato del this
         receiveConfirm: function(textingContact) {
+            this.lastAccess = textingContact.name + ' sta scrivendo...';
             setTimeout(() => {
                 var date = this.currentDate();
                 var newMessage = {
@@ -153,6 +155,7 @@ var app = new Vue({
                     status: 'received'
                 };
                 textingContact.messages.push(newMessage);
+                this.lastAccess = 'Ultimo accesso oggi alle';
             },1000);
         },
     },
