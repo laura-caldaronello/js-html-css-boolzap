@@ -125,12 +125,6 @@ var app = new Vue({
         },
         openChat: function(clickedIndex) {
             this.activeContact = clickedIndex;
-            // if (!clickedContact.active) {
-            //     this.contacts.forEach((contact) => {
-            //         contact.active = false;
-            //     });
-            //     clickedContact.active = true;
-            // }
         },
         sendMessage: function(textingContact) {
             var text = document.getElementById('write-message').value;
