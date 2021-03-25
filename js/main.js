@@ -169,7 +169,7 @@ var app = new Vue({
             this.newMessage = '';
         },
         insertEmoticon: function(element) {
-            this.newMessage += element;
+            this.newMessage += '<i class="in-text fas fa-' + element + '"></i>';
         },
     },
 });

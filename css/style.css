@@ -125,15 +125,19 @@ input, ul {
     font-size: 0.7em;
     color: rgb(177,177,177);
 }
-.chat-content [class*='-message'] i {
+.chat-content [class*='-message'] i:not(.in-text) {
     visibility: hidden;
     position: absolute;
     right: 8px;
     top: 8px;
     color: rgb(177,177,177);
 }
-.chat-content [class*='-message']:hover i {
+.chat-content [class*='-message']:hover i:not(.in-text) {
     visibility: visible;
+}
+.chat-content [class*='-message'] i.in-text {
+    color: black;
+    font-size: 1.5em;
 }
 ul[class*='-menu'] {
     position: absolute;

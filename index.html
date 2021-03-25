@@ -78,7 +78,7 @@
             <div class="chat-content" v-for="contacts[activeContact]">
                 <div class="row" v-for="(message,index) in contacts[activeContact].messages" :class="(message.status == 'sent')? 'row-me' : 'row-other'">
                     <div class="general-text-area-style" :class="(message.status == 'sent')? 'me-message' : 'other-message'">
-                        {{message.text}}
+                        <span v-html="message.text"></span>
                         <div class="message-time">
                             {{message.date}}
                         </div>
