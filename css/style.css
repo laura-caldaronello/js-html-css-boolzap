@@ -48,10 +48,25 @@ input, ul {
     display: inline-block;
     vertical-align: middle;
 }
-.person-style .person-access {
+.person-style .person-access,
+.person-style .person-info .person-last-text {
     font-size: 0.8em;
     color: rgb(177,177,177);
+    overflow: hidden;
 }
+.person-style .person-info .person-name,
+.person-style .person-info .person-last-text {
+    height: 25px;
+    line-height: 25px;
+}
+.person-style .person-info .person-last-time {
+    position: absolute;
+    top: 0;
+    right: -15px;
+    font-size: 0.6em;
+    color: rgb(177,177,177);
+}
+
 .buttons-container-style i {
     padding: 0 5px;
     line-height: 50px; /* come il circle */
@@ -225,6 +240,10 @@ input, ul {
 }
 #chats .person-style:not(.active):hover {
     background-color: rgb(234,234,234);
+}
+#chats .person-style .person-info {
+    position: relative;
+    width: calc(100% - 20px - 50px);
 }
 
 /* /left */
