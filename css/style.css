@@ -135,12 +135,10 @@ input, ul {
 .chat-content [class*='-message']:hover i {
     visibility: visible;
 }
-.chat-content [class*='-message'] ul {
+ul[class*='-menu'] {
     position: absolute;
     width: max-content;
     padding: 20px;
-    top: 15px;
-    right: 0;
     list-style: none;
     background-color: white;
     font-weight: 400;
@@ -149,10 +147,14 @@ input, ul {
     z-index: 1;
     visibility: hidden;
 }
-.chat-content [class*='-message'] ul.visible {
+.chat-content [class*='-message'] ul {
+    top: 15px;
+    right: 0;
+}
+ul[class*='-menu'].visible {
     visibility: visible;
 }
-.chat-content [class*='-message'] li {
+ul[class*='-menu'] li {
     cursor: pointer;
 }
 .chat-content [class*='-message'] li:not(:last-child) {
@@ -233,10 +235,10 @@ input, ul {
     padding: 10px;
 }
 #chats .person-style:not(:last-child) {
-    border-bottom: 1px solid rgb(234,234,234);
+    border-bottom: 1px solid lightgrey;
 }
 #chats .person-style.active {
-    background-color: rgb(234,234,234);
+    background-color: lightgrey;
 }
 #chats .person-style:not(.active):hover {
     background-color: rgb(234,234,234);
@@ -275,6 +277,21 @@ input, ul {
 .send-to i {
     font-size: 1.2em;
     color: rgb(107,115,118);
+}
+.send-to .fa-smile {
+    position: relative;
+}
+.send-to .emoticon-menu {
+    width: 200px;
+    bottom: 150%;
+    left: 50%;
+    transform: translate(-50%);
+}
+.send-to .emoticon-menu li {
+    width: calc((200px - 40px) / 5);
+    height: calc((200px - 40px) / 5);
+    float: left;
+    text-align: center;
 }
 
 /* /right */

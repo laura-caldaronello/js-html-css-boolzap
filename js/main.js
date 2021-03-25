@@ -6,6 +6,8 @@ var app = new Vue({
         lastAccess: 'Ultimo accesso oggi alle',
         search: '',
         newMessage: '',
+        emoticonsActive: false,
+        emoticons: ['angry','dizzy','flushed','frown','frown-open','grimace','grin','grin-alt','grin-beam','grin-beam-sweat','grin-hearts','grin-squint','grin-squint-tears','grin-stars','grin-tears','grin-tongue','grin-tongue-squint','grin-tongue-wink','grin-wink','kiss','kiss-beam','kiss-wink-heart','laugh','laugh-beam','laugh-squint','laugh-wink','meh','meh-blank','meh-rolling-eyes','sad-cry','sad-tear','smile','smile-beam','surprise','tired'],
         contacts: [
             {
                 name: 'Michele',
@@ -94,6 +96,9 @@ var app = new Vue({
 
     },
     methods: {
+        toggleEmoticons: function() {
+            this.emoticonsActive = !this.emoticonsActive;
+        },
         toggleWindow: function(index) {
             if (this.clickedChevron == index) {
                 this.clickedChevron = -1;
@@ -162,6 +167,9 @@ var app = new Vue({
             }
             this.newMessage = '';
             this.receiveConfirm(textingContact);
+        },
+        insertEmoticon: function(element) {
+            this.newMessage += element;
         },
     },
 });

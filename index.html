@@ -92,7 +92,13 @@
                 </div>
             </div>
             <div class="send-to" v-for="contacts[activeContact]">
-                <i class="far fa-smile"></i>
+                <i class="far fa-smile" @click="toggleEmoticons">
+                    <ul :class="emoticonsActive? 'visible' : ''" class="emoticon-menu">
+                        <li v-for="emoticon in emoticons">
+                            <i class="fas" :class="'fa-' + emoticon" @click="insertEmoticon(emoticon)"></i>
+                        </li>
+                    </ul>
+                </i>
                 <input type="text" class="general-text-area-style" name="write-message" id="write-message" v-model="newMessage" placeholder="Scrivi un messaggio" v-on:keyup.enter="sendMessage(contacts[activeContact])">
                 <i class="fas fa-microphone" :class="(newMessage == '')? 'fa-microphone' : 'fa-paper-plane'" @click="sendMessage(contacts[activeContact])"></i>
                 </div>
