@@ -2,13 +2,13 @@ var app = new Vue({
     el: '#root',
     data: {
         clickedChevron: -1,
+        activeContact: 0,
         search: '',
         contacts: [
             {
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
-                active: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -31,7 +31,6 @@ var app = new Vue({
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
-                active: false,
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -54,7 +53,6 @@ var app = new Vue({
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
-                active: false,
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -77,7 +75,6 @@ var app = new Vue({
                 name: 'Luisa',
                 avatar: '_4',
                 visible: true,
-                active: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -126,13 +123,14 @@ var app = new Vue({
             var date = dayjs().format('DD/MM/YYYY hh:mm:ss');
             return date;
         },
-        openChat: function(clickedContact) {
-            if (!clickedContact.active) {
-                this.contacts.forEach((contact) => {
-                    contact.active = false;
-                });
-                clickedContact.active = true;
-            }
+        openChat: function(clickedIndex) {
+            this.activeContact = clickedIndex;
+            // if (!clickedContact.active) {
+            //     this.contacts.forEach((contact) => {
+            //         contact.active = false;
+            //     });
+            //     clickedContact.active = true;
+            // }
         },
         sendMessage: function(textingContact) {
             var text = document.getElementById('write-message').value;
