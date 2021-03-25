@@ -14,7 +14,9 @@
 <body>
     
     <div id="root">
+        <!-- contenitore sx -->
         <div id="left-content">
+            <!-- user -->
             <div class="header-style">
                 <div class="person-style" id="person-me">
                     <div class="circle-style">
@@ -30,6 +32,9 @@
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
             </div>
+            <!-- /user -->
+
+            <!-- notifiche -->
             <div id="notifications">
                 <div class="circle-style">
                     <i class="fas fa-bell-slash"></i>
@@ -39,12 +44,18 @@
                     <a href="#">Attiva notifiche desktop</a>
                 </div>
             </div>
+            <!-- /notifiche -->
+
+            <!-- ricerca contatti -->
             <div id="search-chat">
                 <div class="general-text-area-style">
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" v-on:keyup="contactVisibility">
                 </div>
             </div>
+            <!-- /ricerca contatti -->
+
+            <!-- elenco contatti -->
             <div id="chats">
                 <div v-for="(contact,index) in contacts" v-if="contact.visible" class="person-style" :class="(index == activeContact)? 'active' : ''" @click="openChat(index);closeWindow()">
                     <div class="circle-style">
@@ -57,8 +68,13 @@
                     </div>
                 </div>
             </div>
+            <!-- /elenco contatti -->
         </div>
+        <!-- /contenitore sx -->
+
+        <!-- contenitore dx -->
         <div id="right-content">
+            <!-- contatto attuale -->
             <div class="header-style">
                 <div class="person-style person-chatting" v-for="contacts[activeContact]">
                     <div class="circle-style">
@@ -75,6 +91,9 @@
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
             </div>
+            <!-- /contatto attuale -->
+
+            <!-- chat con contatto attuale -->
             <div class="chat-content" v-for="contacts[activeContact]">
                 <div class="row" v-for="(message,index) in contacts[activeContact].messages" :class="(message.status == 'sent')? 'row-me' : 'row-other'">
                     <div class="general-text-area-style" :class="(message.status == 'sent')? 'me-message' : 'other-message'">
@@ -91,6 +110,9 @@
                     </div>
                 </div>
             </div>
+            <!-- /chat con contatto attuale -->
+
+            <!-- scrivi messaggio -->
             <div class="send-to" v-for="contacts[activeContact]">
                 <i class="far fa-smile" @click="toggleEmoticons">
                     <ul :class="emoticonsActive? 'visible' : ''" class="emoticon-menu">
@@ -103,7 +125,9 @@
                 <i class="fas fa-microphone" :class="(newMessage == '')? 'fa-microphone' : 'fa-paper-plane'" @click="sendMessage(contacts[activeContact])"></i>
                 </div>
             </div>
+            <!-- /scrivi messaggio -->
         </div>
+        <!-- /contenitore dx -->
     </div>
 
     <script src="js/main.js"></script>

@@ -282,6 +282,8 @@ ul[class*='-menu'] li {
     font-size: 1.2em;
     color: rgb(107,115,118);
     cursor: pointer;
+    width: 25px;
+    text-align: center;
 }
 .send-to .fa-smile {
     position: relative;
