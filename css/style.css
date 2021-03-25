@@ -137,6 +137,9 @@ input, ul {
 .chat-content [class*='-message'] ul.visible {
     visibility: visible;
 }
+.chat-content [class*='-message'] li {
+    cursor: pointer;
+}
 .chat-content [class*='-message'] li:not(:last-child) {
     padding-bottom: 20px;
 }

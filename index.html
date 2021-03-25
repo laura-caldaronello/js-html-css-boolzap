@@ -83,7 +83,7 @@
                         <i class="fas fa-chevron-down" @click="toggleWindow(index)">
                             <ul :class="(clickedChevron == index)? 'visible' : ''" class="message-menu">
                                 <li>Message info</li>
-                                <li>Delete message</li>
+                                <li @click="deleteMessage(index,contacts[activeContact])">Delete message</li>
                             </ul>
                         </i>
                     </div>

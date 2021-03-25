@@ -105,6 +105,10 @@ var app = new Vue({
                 this.clickedChevron = -1;
             }
         },
+        deleteMessage: function(clickedMessageIndex,fromOrToWho) {
+            console.log(fromOrToWho.messages[clickedMessageIndex]);
+            fromOrToWho.messages[clickedMessageIndex].text = 'Questo messaggio è stato eliminato.';
+        },
         contactVisibility: function() {
             var searchChars = this.search;
             var index = searchChars.length;
