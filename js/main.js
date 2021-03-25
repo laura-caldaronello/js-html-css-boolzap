@@ -96,6 +96,9 @@ var app = new Vue({
 
     },
     methods: {
+        orderContacts: function() {
+            this.contacts.sort((a,b) => (a.messages[a.messages.length - 1].date < b.messages[b.messages.length - 1].date)? 1 : -1);
+        },
         toggleEmoticons: function() {
             this.emoticonsActive = !this.emoticonsActive;
         },
@@ -131,7 +134,7 @@ var app = new Vue({
             });
         },
         currentDate: function() {
-            var date = dayjs().format('DD/MM/YYYY hh:mm:ss');
+            var date = dayjs().format('DD/MM/YYYY HH:mm:ss');
             return date;
         },
         openChat: function(clickedIndex) {
@@ -150,6 +153,7 @@ var app = new Vue({
                 textingContact.messages.push(newMessage);
                 this.lastAccess = 'Ultimo accesso oggi alle';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
+                this.orderContacts();
             },1000);
         },
         sendMessage: function(textingContact) {
@@ -164,6 +168,7 @@ var app = new Vue({
                 textingContact.messages.push(newMessage);
                 document.getElementById('write-message').value = '';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
+                this.orderContacts();
                 this.receiveConfirm(textingContact);
             }
             this.newMessage = '';
@@ -171,6 +176,17 @@ var app = new Vue({
         insertEmoticon: function(element) {
             this.newMessage += '<i class="in-text fas fa-' + element + '"></i>';
         },
+    },
+    created: function() {
+        // servirà?
+        // this.contacts.forEach((contact) => {
+        //     contact.messages.forEach((message) => {
+        //         let support = message.data;
+        //          message.data = new dayjs(support,'DD/MM/YYYY HH:mm:ss');
+        //     });
+        // });
+
+        this.orderContacts();
     },
 });
 Vue.config.devtools = true;
