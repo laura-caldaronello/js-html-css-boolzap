@@ -135,6 +135,8 @@ var app = new Vue({
         },
         openChat: function(clickedIndex) {
             this.activeContact = clickedIndex;
+            // e le notifiche spariscono
+            this.contacts[clickedIndex].unread = 0;
         },
         // NB: la arrow function mi permette di cambiare lo scope del this e fa in modo che si riferisca effettivamente all'oggetto root; utilizzando una function normale il settimeout sembra che cambi il significato del this
         receiveConfirm: function(textingContact) {
@@ -148,9 +150,11 @@ var app = new Vue({
                 };
                 textingContact.messages.push(newMessage);
                 this.orderContacts();
+                // nuova notifica
+                textingContact.unread += 1;
                 this.lastAccess = 'Ultimo accesso oggi alle';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
-            },1000);
+            },10000);
         },
         sendMessage: function(textingContact) {
             var text = this.newMessage;
@@ -187,6 +191,8 @@ var app = new Vue({
                 support = dayjs(year + '-' + month + '-' + day + 'T' + hour);
                 message.date = support;
             });
+            // approfitto di questo ciclo per dire che per ogni contatto i messaggi non letti inizialmente sono 0 (istanzio una nuova proprietà)
+            contact.unread = 0;
         });
         this.orderContacts();
     },

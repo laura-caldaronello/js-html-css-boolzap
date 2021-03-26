@@ -65,6 +65,7 @@
                         <div class="person-name">{{contact.name}}</div>
                         <div class="person-last-text">{{contact.messages[contact.messages.length - 1].text}}</div>
                         <div class="person-last-time">{{contact.messages[contact.messages.length - 1].date.format('DD/MM/YYYY HH:mm:ss')}}</div>
+                        <div class="person-notification" :class="(contact.unread != 0)? 'visible' : ''">{{contact.unread}}</div>
                     </div>
                 </div>
             </div>
