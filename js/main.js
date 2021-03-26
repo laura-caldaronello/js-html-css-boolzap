@@ -139,6 +139,8 @@ var app = new Vue({
             this.contacts[clickedIndex].unread = 0;
             // e la scritta sotto al nome in alto cambia
             this.isTexting();
+            // e scorro in fondo
+            document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
         },
         isTexting: function() {
             if (this.contacts[this.activeContact].texting) {
