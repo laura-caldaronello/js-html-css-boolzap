@@ -137,10 +137,22 @@ var app = new Vue({
             this.activeContact = clickedIndex;
             // e le notifiche spariscono
             this.contacts[clickedIndex].unread = 0;
+            // e la scritta sotto al nome in alto cambia
+            this.isTexting();
+        },
+        isTexting: function() {
+            if (this.contacts[this.activeContact].texting) {
+                this.lastAccess = this.contacts[this.activeContact].name + ' sta scrivendo...';
+            }
+            else {
+                this.lastAccess = 'Ultimo accesso oggi alle';
+            };
         },
         // NB: la arrow function mi permette di cambiare lo scope del this e fa in modo che si riferisca effettivamente all'oggetto root; utilizzando una function normale il settimeout sembra che cambi il significato del this
         receiveConfirm: function(textingContact) {
-            this.lastAccess = textingContact.name + ' sta scrivendo...';
+            // se siamo in quella chat vediamo "sta scrivendo"
+            textingContact.texting = true;
+            this.isTexting();
             setTimeout(() => {
                 var date = dayjs();
                 var newMessage = {
@@ -150,9 +162,14 @@ var app = new Vue({
                 };
                 textingContact.messages.push(newMessage);
                 this.orderContacts();
-                // nuova notifica
-                textingContact.unread += 1;
-                this.lastAccess = 'Ultimo accesso oggi alle';
+                // nuova notifica se non sono già all'interno di quella chat
+                if (this.contacts[this.activeContact] != textingContact) {
+                    textingContact.unread += 1;
+                }
+                // this.lastAccess = 'Ultimo accesso oggi alle';
+                textingContact.texting = false;
+                this.isTexting();
+
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
             },10000);
         },
@@ -193,6 +210,8 @@ var app = new Vue({
             });
             // approfitto di questo ciclo per dire che per ogni contatto i messaggi non letti inizialmente sono 0 (istanzio una nuova proprietà)
             contact.unread = 0;
+            // e dico anche che nessuno inizialmente sta rispondendo ai messaggi
+            contact.texting = false;
         });
         this.orderContacts();
     },
