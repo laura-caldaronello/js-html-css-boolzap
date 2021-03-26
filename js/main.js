@@ -133,10 +133,6 @@ var app = new Vue({
                 };
             });
         },
-        currentDate: function() {
-            var date = dayjs();
-            return date;
-        },
         openChat: function(clickedIndex) {
             this.activeContact = clickedIndex;
         },
@@ -144,7 +140,7 @@ var app = new Vue({
         receiveConfirm: function(textingContact) {
             this.lastAccess = textingContact.name + ' sta scrivendo...';
             setTimeout(() => {
-                var date = this.currentDate();
+                var date = dayjs();
                 var newMessage = {
                     date: date,
                     text: 'ok',
@@ -161,7 +157,7 @@ var app = new Vue({
         sendMessage: function(textingContact) {
             var text = this.newMessage;
             if (text != '') {
-                var date = this.currentDate();
+                var date = dayjs();
                 var newMessage = {
                     date: date,
                     text: text,
