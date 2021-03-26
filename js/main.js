@@ -148,8 +148,6 @@ var app = new Vue({
                 };
                 textingContact.messages.push(newMessage);
                 this.orderContacts();
-                // siccome cambio l'ordine dei contatti in base all'ultimo messaggio allora l'attivo è il primo della lista
-                this.activeContact = 0;
                 this.lastAccess = 'Ultimo accesso oggi alle';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
             },1000);
