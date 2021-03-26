@@ -134,7 +134,7 @@ var app = new Vue({
             });
         },
         currentDate: function() {
-            var date = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            var date = dayjs();
             return date;
         },
         openChat: function(clickedIndex) {
@@ -151,9 +151,11 @@ var app = new Vue({
                     status: 'received'
                 };
                 textingContact.messages.push(newMessage);
+                this.orderContacts();
+                // siccome cambio l'ordine dei contatti in base all'ultimo messaggio allora l'attivo è il primo della lista
+                this.activeContact = 0;
                 this.lastAccess = 'Ultimo accesso oggi alle';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
-                this.orderContacts();
             },1000);
         },
         sendMessage: function(textingContact) {
@@ -166,9 +168,11 @@ var app = new Vue({
                     status: 'sent'
                 };
                 textingContact.messages.push(newMessage);
+                this.orderContacts();
+                // siccome cambio l'ordine dei contatti in base all'ultimo messaggio allora l'attivo è il primo della lista
+                this.activeContact = 0;
                 document.getElementById('write-message').value = '';
                 document.getElementsByClassName('chat-content')[0].scrollTop = 9999999;
-                this.orderContacts();
                 this.receiveConfirm(textingContact);
             }
             this.newMessage = '';
@@ -178,14 +182,18 @@ var app = new Vue({
         },
     },
     created: function() {
-        // servirà?
-        // this.contacts.forEach((contact) => {
-        //     contact.messages.forEach((message) => {
-        //         let support = message.data;
-        //          message.data = new dayjs(support,'DD/MM/YYYY HH:mm:ss');
-        //     });
-        // });
-
+        // NB: il confronto tra date nel formato non accettatto universalmente mi dava problemi, quindi ho convertito il tutto e solo in fase di stampa nell'html ho aggiunto il formato desiderato
+        this.contacts.forEach((contact) => {
+            contact.messages.forEach((message) => {
+                let support = message.date;
+                let year = support.slice(6,10);
+                let month = support.slice(3,5);
+                let day = support.slice(0,2);
+                let hour = support.slice(11,19);
+                support = dayjs(year + '-' + month + '-' + day + 'T' + hour);
+                message.date = support;
+            });
+        });
         this.orderContacts();
     },
 });

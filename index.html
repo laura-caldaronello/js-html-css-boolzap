@@ -64,7 +64,7 @@
                     <div class="person-info">
                         <div class="person-name">{{contact.name}}</div>
                         <div class="person-last-text">{{contact.messages[contact.messages.length - 1].text}}</div>
-                        <div class="person-last-time">{{contact.messages[contact.messages.length - 1].date}}</div>
+                        <div class="person-last-time">{{contact.messages[contact.messages.length - 1].date.format('DD/MM/YYYY HH:mm:ss')}}</div>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <div class="general-text-area-style" :class="(message.status == 'sent')? 'me-message' : 'other-message'">
                         <span v-html="message.text"></span>
                         <div class="message-time">
-                            {{message.date}}
+                            {{message.date.format('DD/MM/YYYY HH:mm:ss')}}
                         </div>
                         <i class="fas" :class="(clickedChevron != -1)? 'fa-chevron-up' : 'fa-chevron-down'" @click="toggleWindow(index)">
                             <ul :class="(clickedChevron == index)? 'visible' : ''" class="message-menu">
