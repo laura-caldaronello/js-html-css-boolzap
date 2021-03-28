@@ -97,7 +97,9 @@ var app = new Vue({
     },
     methods: {
         orderContacts: function() {
+            var support = this.contacts[this.activeContact];
             this.contacts.sort((a,b) => (a.messages[a.messages.length - 1].date < b.messages[b.messages.length - 1].date)? 1 : -1);
+            this.activeContact = this.contacts.indexOf(support);
         },
         toggleEmoticons: function() {
             this.emoticonsActive = !this.emoticonsActive;
@@ -216,6 +218,7 @@ var app = new Vue({
             contact.texting = false;
         });
         this.orderContacts();
+        this.activeContact = 0;
     },
 });
 Vue.config.devtools = true;
